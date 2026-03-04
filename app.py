@@ -39,6 +39,17 @@ print(medias_por_filme.head())
 # plt.show()
 # sns.boxplot(medias_por_filme)
 # plt.show()
-sns.displot(medias_por_filme, kde=True)
-plt.title("Histograma de média por filmes")
+#sns.displot(medias_por_filme, kde=True)
+#plt.title("Histograma de média por filmes")
+#plt.show()
+
+notas_toy_story = notas.query("filmeID==1")["nota"]
+notas_jumanji = notas.query("filmeID==2")["nota"]
+
+media_toy_story = notas_toy_story.mean()
+media_jumanji = notas_jumanji.mean()
+print(round(media_toy_story, 2), round(media_jumanji, 2))
+
+#plt.boxplot([notas_toy_story, notas_jumanji])
+sns.boxplot(data=notas.query("filmeID in [1,2]"), x="filmeID", y="nota")
 plt.show()
